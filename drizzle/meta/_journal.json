@@ -8,6 +8,13 @@
       "when": 1759182419784,
       "tag": "0000_lush_rick_jones",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1759197043229,
+      "tag": "0001_giant_nocturne",
+      "breakpoints": true
     }
   ]
 }
