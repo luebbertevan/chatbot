@@ -1,8 +1,13 @@
-import { betterAuth } from "better-auth"
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { db } from "./db/db";
 
+console.log("loading auth")
 export const auth = betterAuth({
-    database: {
-        provider: "postgres", //change this to your database provider
-        url: process.env.DATABASE_URL, // path to your database or connection string
-    }
+    emailAndPassword: { 
+        enabled: true, 
+    }, 
+    database: drizzleAdapter(db, {
+        provider: "pg", // or "pg" or "mysql"
+    }),
 })
