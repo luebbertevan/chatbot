@@ -1,3 +1,6 @@
+export * as authSchema from "./auth-schema";
+
+
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
