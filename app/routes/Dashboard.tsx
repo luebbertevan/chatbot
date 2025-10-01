@@ -1,22 +1,32 @@
+import { redirect, useNavigation, type LoaderFunctionArgs } from "react-router";
+import type { Route } from "./+types/dashboard"; 
 import Spinner from "ui/Spinner";
-import { authClient } from "~/lib/auth-client";
+import { requireUser } from "./requireUser";
 
-export default function Dashboard() {
-  const { data, isPending, error } = authClient.useSession();
 
-  	if (isPending) {
-		return (
-			<div className="flex items-center justify-center h-screen">
-				<Spinner size={100} />
-			</div>
-		);
-	}
-  if (error) return <div>Error loading session: {error.message}</div>;
+export async function loader({ request }: LoaderFunctionArgs) {
+  const user = await requireUser(request);
+  return { user };
+}
+
+
+export default function Dashboard({ loaderData }: Route.ComponentProps) {
+  const user = loaderData.user;
+    const navigation = useNavigation();
+
+  if (navigation.state === "loading" || navigation.state === "submitting") {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Spinner size={100} />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
       <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
-      <p>Welcome, <span className="text-indigo-600">{data?.user?.name}!</span></p>
+      <p>Welcome, <span className="text-indigo-600">{user.name || user.email}!</span></p>
     </div>
   );
 }
+
