@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { Form, Link, useNavigate } from "react-router";
-import { authClient } from "~/lib/auth-client";
 import Spinner from "ui/Spinner";
+import { authClient } from "~/lib/auth-client";
 
-export default function SignUp() {
+export default function SignIn() {
 	const [email, setEmail] = useState("");
-	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
+	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
 
-	const navigate = useNavigate();
-
-	const signUp = async (event: React.FormEvent) => {
+	const signIn = async (event: React.FormEvent) => {
 		event?.preventDefault();
+
 		try {
 			setLoading(true);
-			await authClient.signUp.email(
-				{ email, password, name },
+			await authClient.signIn.email(
+				{ email, password },
 				{
 					onRequest: () => {}, // optional, loading already true
 					onSuccess: (ctx) => navigate("/dashboard"),
@@ -24,7 +23,7 @@ export default function SignUp() {
 				}
 			);
 		} catch (err) {
-			alert("Sign Up Failed");
+			alert("Sign In Failed");
 		} finally {
 			setLoading(false); // always stop spinner
 		}
@@ -33,29 +32,12 @@ export default function SignUp() {
 		<div className="min-h-screen flex items-center justify-center bg-gray-50">
 			<div className="w-full max-w-md bg-white rounded-2xl shadow-md p-8">
 				<h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-					Create your account
+					Sign In
 				</h2>
 				{loading ? (
 					<Spinner size={70} />
 				) : (
-					<Form onSubmit={signUp} className="space-y-5">
-						<div>
-							<label
-								htmlFor="name"
-								className="block text-sm font-medium text-gray-700"
-							>
-								Name
-							</label>
-							<input
-								type="text"
-								value={name}
-								required
-								onChange={(e) => setName(e.target.value)}
-								className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-								placeholder="name"
-							/>
-						</div>
-
+					<Form onSubmit={signIn} className="space-y-5">
 						<div>
 							<label
 								htmlFor="email"
@@ -94,17 +76,17 @@ export default function SignUp() {
 							type="submit"
 							className="w-full flex justify-center rounded-lg bg-indigo-600 px-4 py-2 text-white font-semibold shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
 						>
-							Sign Up
+							Log In
 						</button>
 					</Form>
 				)}
 				<p className="mt-6 text-center text-sm text-gray-600">
-					Already have an account?{" "}
+					Don't have an account?{" "}
 					<Link
-						to="/signIn"
+						to="/signUp"
 						className="m-2 px-2 py-1 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
 					>
-						Log In
+						Sign Up
 					</Link>
 					<Link
 						to="/"
