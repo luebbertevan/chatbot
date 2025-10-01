@@ -19,7 +19,7 @@ export default function SignUp() {
 				{ email, password, name },
 				{
 					onRequest: () => {}, // optional, loading already true
-					onSuccess: (ctx) => navigate("/dashboard"),
+					onSuccess: (ctx) => navigate("/protected"),
 					onError: (ctx) => alert("Sign In Error"),
 				}
 			);

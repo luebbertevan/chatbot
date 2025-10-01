@@ -1,12 +1,19 @@
 import { redirect, useNavigation, type LoaderFunctionArgs } from "react-router";
 import type { Route } from "./+types/dashboard"; 
 import Spinner from "ui/Spinner";
-import { requireUser } from "./requireUser";
 
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const user = await requireUser(request);
-  return { user };
+    const url = new URL(request.url);
+
+  const res = await fetch(`${url.origin}/api/session`, {
+    headers: request.headers, // pass cookies for auth
+  });
+
+  if (res.status === 401) throw redirect("/signIn");
+
+  const data = await res.json();
+  return { user: data.user };
 }
 
 
