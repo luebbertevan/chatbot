@@ -3,6 +3,7 @@ import type { Route } from "./+types/chat";
 import Spinner from "ui/Spinner";
 import { useChat } from "@ai-sdk/react";
 import { useState } from "react";
+import { DefaultChatTransport } from "ai";
 
 export default function Chat({ loaderData }: Route.ComponentProps) {
 	const navigation = useNavigation();
@@ -15,7 +16,11 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 		);
 	}
 
-	const { messages, sendMessage } = useChat();
+	const { messages, sendMessage, status } = useChat({
+		transport: new DefaultChatTransport({
+			api: "/ai",
+		}),
+	});
 	const [input, setInput] = useState("");
 
 	return (
@@ -47,7 +52,6 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 					placeholder="Say something..."
 				/>
 			</form>
-      
 		</div>
 	);
 }
