@@ -86,6 +86,12 @@ export default function SignIn() {
 					>
 						Sign Up
 					</Link>
+					<Link
+						to="/"
+						className="m-2 px-2 py-1 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
+					>
+						Home
+					</Link>
 				</p>
 			</div>
 		</div>

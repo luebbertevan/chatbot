@@ -26,19 +26,24 @@ export default function Home() {
 	return (
 		<div className="min-h-screen bg-gray-50">
 			<div className="w-full flex flex-col items-center justify-start">
-        <h1 className="text-4xl font-bold font-Roboto drop-shadow-md text-center text-gray-900">
-          Welcome to Chatbot
-        </h1>
-        <div className="flex items-center justify-center">
-          <Link
-            to="/signUp"
-            className="m-2 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
-          >
-            Create an account
-          </Link>
-
-        </div>
-      </div>
+				<h1 className="text-4xl font-bold font-Roboto drop-shadow-md text-center text-gray-900">
+					Welcome to Chatbot
+				</h1>
+				<div className="flex items-center justify-center">
+					<Link
+						to="/signUp"
+						className="m-2 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
+					>
+						Create an account
+					</Link>
+					<Link
+						to="/signUp"
+						className="m-2 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
+					>
+						Sign In
+					</Link>
+				</div>
+			</div>
 		</div>
 	);
 }
