@@ -5,11 +5,10 @@ import type { Route } from "./+types/protected";
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const session = await auth.api.getSession({ headers: request.headers })
-    if (session?.user) {
-        return { user: session.user }
-    } else {
-        throw redirect("/")
-    }
+    if (!session?.user) {
+        throw redirect("/signIn")
+    } 
+    throw redirect("/dashboard")
 }
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -17,5 +16,5 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Protected({ loaderData }: Route.ComponentProps) {
-    return <div>Hello, {JSON.stringify(loaderData.user.email)}!</div>
+    return <div>Why are you here?</div>
 }

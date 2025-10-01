@@ -17,7 +17,7 @@ export default function SignIn() {
 			await authClient.signIn.email(
 				{ email, password },
 				{
-					onRequest: () => {}, // optional, loading already true
+					onRequest: () => {<Spinner size={70}/>}, // optional, loading already true
 					onSuccess: (ctx) => navigate("/protected"),
 					onError: (ctx) => alert("Sign In Error"),
 				}
