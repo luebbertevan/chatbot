@@ -28,6 +28,9 @@ export default function Home() {
 		return <div>Error loading session: {error.message}</div>;
 	}
 
+  // if (data) {
+  //   return <div>Hello, {data.user.email}!</div>
+  // } 
 	return (
 		<div className="min-h-screen bg-gray-50">
 			<div className="w-full flex flex-col items-center justify-start">
