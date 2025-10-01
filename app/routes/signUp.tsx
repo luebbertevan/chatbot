@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Form } from "react-router";
+import { Form, useNavigate } from "react-router";
 import { authClient } from "~/lib/auth-client";
 
 export default function SignUp() {
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
+	const navigate = useNavigate();
 
-	const signUp = async () => {
+	const signUp = async (event: React.FormEvent) => {
+		event?.preventDefault();
+		
 		await authClient.signUp.email(
 			{
 				email,
@@ -16,10 +19,10 @@ export default function SignUp() {
 			},
 			{
 				onRequest: (ctx) => {
-					// show loading state
+					<div>...Signing In</div>
 				},
 				onSuccess: (ctx) => {
-					// redirect to home
+					navigate("/dashboard")
 				},
 				onError: (ctx) => {
 					alert(ctx.error);
