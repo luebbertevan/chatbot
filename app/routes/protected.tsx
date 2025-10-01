@@ -8,7 +8,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     if (!session?.user) {
         throw redirect("/signIn")
     } 
-    throw redirect("/dashboard")
+    throw redirect("/chat")
 }
 
 export async function action({ request }: ActionFunctionArgs) {
