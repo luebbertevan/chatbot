@@ -13,11 +13,10 @@ export default function SignUp() {
 
 	const signUp = async (event: React.FormEvent) => {
 		event?.preventDefault();
-
 		try {
 			setLoading(true);
-			await authClient.signIn.email(
-				{ email, password },
+			await authClient.signUp.email(
+				{ email, password, name },
 				{
 					onRequest: () => {}, // optional, loading already true
 					onSuccess: (ctx) => navigate("/dashboard"),
@@ -25,7 +24,7 @@ export default function SignUp() {
 				}
 			);
 		} catch (err) {
-			alert("Sign In Failed");
+			alert("Sign Up Failed");
 		} finally {
 			setLoading(false); // always stop spinner
 		}

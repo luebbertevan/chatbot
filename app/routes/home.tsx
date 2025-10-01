@@ -17,7 +17,11 @@ export default function Home() {
 	const { data, isPending, error } = authClient.useSession();
 
 	if (isPending) {
-		<Spinner size={200}/>
+		return (
+			<div className="flex items-center justify-center h-screen">
+				<Spinner size={100} />
+			</div>
+		);
 	}
 
 	if (error) {
@@ -38,7 +42,7 @@ export default function Home() {
 						Create an account
 					</Link>
 					<Link
-						to="/signUp"
+						to="/signIn"
 						className="m-2 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
 					>
 						Sign In
