@@ -3,22 +3,8 @@ import type { Route } from "./+types/dashboard";
 import Spinner from "ui/Spinner";
 
 
-export async function loader({ request }: LoaderFunctionArgs) {
-    const url = new URL(request.url);
-
-  const res = await fetch(`${url.origin}/api/session`, {
-    headers: request.headers, // pass cookies for auth
-  });
-
-  if (res.status === 401) throw redirect("/signIn");
-
-  const data = await res.json();
-  return { user: data.user };
-}
-
-
 export default function Dashboard({ loaderData }: Route.ComponentProps) {
-  const user = loaderData.user;
+  const user = { name: "Test User", email: "test@example.com" };
     const navigation = useNavigation();
 
   if (navigation.state === "loading" || navigation.state === "submitting") {
