@@ -3,13 +3,10 @@ import { useState } from "react";
 import Spinner from "ui/Spinner";
 import { createDefaultCampaign, type CampaignData } from "~/types/campaignData";
 
-
 export default function characterBuilder() {
 	const navigation = useNavigation();
 	const navigate = useNavigate();
-
 	const defaultCampaign = createDefaultCampaign();
-
 	const [characterData, setCharacterData] = useState<
 		CampaignData["characterData"]
 	>(defaultCampaign.characterData);
@@ -24,7 +21,6 @@ export default function characterBuilder() {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-
 		const campaignData = {
 			...defaultCampaign,
 			characterData,
@@ -36,6 +32,7 @@ export default function characterBuilder() {
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
 			<h1 className="text-3xl font-bold mb-6">Choose Your Character!</h1>
+
 			<form onSubmit={handleSubmit} className="flex flex-col gap-4">
 				<input
 					type="text"
