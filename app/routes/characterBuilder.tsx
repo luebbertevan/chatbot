@@ -59,7 +59,6 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
@@ -73,7 +72,6 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
@@ -87,7 +85,6 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
@@ -101,7 +98,6 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
@@ -115,21 +111,19 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
 					type="text"
 					placeholder="Apperance"
-					value={characterData.apperance}
+					value={characterData.appearance}
 					onChange={(e) =>
 						setCharacterData({
 							...characterData,
-							apperance: e.currentTarget.value,
+							appearance: e.currentTarget.value,
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
@@ -143,7 +137,6 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
@@ -157,7 +150,6 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 
 				<input
@@ -171,7 +163,6 @@ export default function characterBuilder() {
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
 				/>
 				<button
 					type="submit"
