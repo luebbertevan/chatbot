@@ -6,7 +6,7 @@ export type CampaignData = {
 		race: string;
 		class: string;
 		armaments: string;
-		apperance: string;
+		appearance: string;
 
 
 		backstory: string;
@@ -31,7 +31,7 @@ export const createDefaultCampaign = (): CampaignData => ({
 	  race: "",
 	  class: "",
 	  armaments: "",
-	  apperance: "",
+	  appearance: "",
 	  backstory: "",
 	  personality: "",
 	  motivation: ""

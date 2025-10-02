@@ -5,6 +5,8 @@ import { useChat } from "@ai-sdk/react";
 import { useEffect, useState } from "react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import type { CampaignData } from "~/types/campaignData";
+import { getSystemPrompt } from "~/prompts/prompt";
+
 
 export default function Chat({ loaderData }: Route.ComponentProps) {
 	const navigation = useNavigation();
@@ -31,18 +33,13 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 	const [input, setInput] = useState("");
 	const [started, setStarted] = useState(false);
 
-	const systemPrompt = `You are the dungeon master for this RPG.
-  The hero is ${character.name}.
-  The adventure is titled "${story.title}".
-  Your role is to narrate and guide the story in a vivid, interactive way.`;
+  const systemPrompt = getSystemPrompt(campaignData);
 
-
-  const systemMessage: UIMessage = {
-  id: 'system-1',
-  role: 'system',
-  parts: [{ type: 'text', text: systemPrompt, state: 'done' }],
-};
-
+	const systemMessage: UIMessage = {
+		id: "system-1",
+		role: "system",
+		parts: [{ type: "text", text: systemPrompt, state: "done" }],
+	};
 
 	const { messages, sendMessage, status } = useChat({
 		transport: new DefaultChatTransport({
@@ -77,11 +74,11 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 				</button>
 			)}
 
-			{messages
-				.filter((msg) => msg.role !== "system")
-				.map((msg) => (
+			{messages.map((msg, index) => {
+				if (index === 0 || msg.role === "system") return null;
+
+				return (
 					<div key={msg.id} className="mb-2">
-						{msg.role === "user" ? "User: " : "AI: "}
 						{msg.parts.map(
 							(part, i) =>
 								part.type === "text" && (
@@ -89,7 +86,8 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 								)
 						)}
 					</div>
-				))}
+				);
+			})}
 
 			{started && (
 				<form
