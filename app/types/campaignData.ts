@@ -15,6 +15,11 @@ export type CampaignData = {
 	}
 	storyData: {
 		title: string;
+		genre: string;
+		tone: string;
+		details: string;
+		hook: string;
+		
 	}
 }
 
@@ -31,5 +36,11 @@ export const createDefaultCampaign = (): CampaignData => ({
 	  personality: "",
 	  motivation: ""
   },
-  storyData: { title: "" },
+  storyData: {
+	  title: "",
+	  genre: "",
+	  tone: "",
+	  details: "",
+	  hook: ""
+  },
 });
