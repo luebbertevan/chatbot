@@ -6,9 +6,11 @@ export default [
 	route("signUp", "routes/signUp.tsx"),
 	route("signIn", "routes/signIn.tsx"),
 
-	route("protected", "routes/protected.tsx", [
+	route("quest", "routes/protected.tsx", [
 		index("routes/menu.tsx"),
-		route("chat", "routes/chat.tsx"),
+		route("character-builder", "routes/characterBuilder.tsx"),
+		route("story-builder", "routes/storyBuilder.tsx"),
+		route("adventure", "routes/chat.tsx"),
 		route("ai", "routes/ai.tsx"),
 	])
 

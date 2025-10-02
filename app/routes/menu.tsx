@@ -19,7 +19,7 @@ export default function Menu() {
 
       <button
         className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
-        onClick={() => navigate("/protected/chat")}
+        onClick={() => navigate("/quest/character-builder")}
       >
         Start Adventure
       </button>
