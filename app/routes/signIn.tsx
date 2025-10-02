@@ -18,7 +18,7 @@ export default function SignIn() {
 				{ email, password },
 				{
 					onRequest: () => {<Spinner size={70}/>}, // optional, loading already true
-					onSuccess: (ctx) => navigate("/protected"),
+					onSuccess: (ctx) => navigate("/quest"),
 					onError: (ctx) => alert("Sign In Error"),
 				}
 			);
