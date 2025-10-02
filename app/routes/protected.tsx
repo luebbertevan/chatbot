@@ -1,4 +1,4 @@
-import { redirect, type ActionFunctionArgs, type LoaderFunctionArgs } from 'react-router'
+import { Outlet, redirect, type ActionFunctionArgs, type LoaderFunctionArgs } from 'react-router'
 import { auth } from '~/auth.server' // Adjust the path as necessary
 import { authClient } from '~/lib/auth-client'
 import type { Route } from "./+types/protected";
@@ -8,7 +8,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     if (!session?.user) {
         throw redirect("/signIn")
     } 
-    throw redirect("/chat")
+    return null
 }
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -16,5 +16,5 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Protected({ loaderData }: Route.ComponentProps) {
-    return <div>Why are you here?</div>
+    return <Outlet/>
 }
