@@ -7,7 +7,8 @@ export default [
 	route("signIn", "routes/signIn.tsx"),
 
 	route("protected", "routes/protected.tsx", [
-		index("routes/chat.tsx"),
+		index("routes/menu.tsx"),
+		route("chat", "routes/chat.tsx"),
 		route("ai", "routes/ai.tsx"),
 	])
 
