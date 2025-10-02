@@ -18,7 +18,7 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 
 	const { messages, sendMessage, status } = useChat({
 		transport: new DefaultChatTransport({
-			api: "/ai",
+			api: "/protected/ai",
 		}),
 	});
 	const [input, setInput] = useState("");
