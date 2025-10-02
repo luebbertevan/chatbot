@@ -9,6 +9,7 @@ export default [
 	route("quest", "routes/protected.tsx", [
 		index("routes/menu.tsx"),
 		route("character-builder", "routes/characterBuilder.tsx"),
+		route("story-builder", "routes/storyBuilder.tsx"),
 		route("adventure", "routes/chat.tsx"),
 		route("ai", "routes/ai.tsx"),
 	])

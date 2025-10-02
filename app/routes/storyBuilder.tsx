@@ -1,7 +1,7 @@
 import { useNavigate, useNavigation } from "react-router";
 import Spinner from "ui/Spinner";
 
-export default function characterBuilder() {
+export default function storyBuilder() {
   const navigation = useNavigation();
   const navigate = useNavigate();
 
@@ -15,13 +15,13 @@ export default function characterBuilder() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-      <h1 className="text-3xl font-bold mb-6">Choose Your Character!</h1>
+      <h1 className="text-3xl font-bold mb-6">Spin Your Tale!</h1>
 
       <button
         className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
-        onClick={() => navigate("/quest/story-builder")}
+        onClick={() => navigate("/quest/adventure")}
       >
-        Awaken
+        Embark!
       </button>
     </div>
   );
