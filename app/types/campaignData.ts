@@ -1,6 +1,17 @@
 export type CampaignData = {
 	characterData: {
 		name: string;
+		pronouns: string;
+		age: string;
+		race: string;
+		class: string;
+		armaments: string;
+		apperance: string;
+
+
+		backstory: string;
+		personality: string
+		motivation: string;
 	}
 	storyData: {
 		title: string;
@@ -8,6 +19,17 @@ export type CampaignData = {
 }
 
 export const createDefaultCampaign = (): CampaignData => ({
-  characterData: { name: "" },
+  characterData: {
+	  name: "",
+	  pronouns: "",
+	  age: "",
+	  race: "",
+	  class: "",
+	  armaments: "",
+	  apperance: "",
+	  backstory: "",
+	  personality: "",
+	  motivation: ""
+  },
   storyData: { title: "" },
 });

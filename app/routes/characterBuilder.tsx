@@ -3,15 +3,16 @@ import { useState } from "react";
 import Spinner from "ui/Spinner";
 import { createDefaultCampaign, type CampaignData } from "~/types/campaignData";
 
+
 export default function characterBuilder() {
 	const navigation = useNavigation();
 	const navigate = useNavigate();
 
+	const defaultCampaign = createDefaultCampaign();
+
 	const [characterData, setCharacterData] = useState<
 		CampaignData["characterData"]
-	>({
-		name: "",
-	});
+	>(defaultCampaign.characterData);
 
 	if (navigation.state === "loading" || navigation.state === "submitting") {
 		return (
@@ -25,7 +26,7 @@ export default function characterBuilder() {
 		e.preventDefault();
 
 		const campaignData = {
-			...createDefaultCampaign(),
+			...defaultCampaign,
 			characterData,
 		};
 
@@ -38,12 +39,138 @@ export default function characterBuilder() {
 			<form onSubmit={handleSubmit} className="flex flex-col gap-4">
 				<input
 					type="text"
-					placeholder="Character Name"
+					placeholder="Name"
 					value={characterData.name}
 					onChange={(e) =>
 						setCharacterData({
 							...characterData,
 							name: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Pronouns"
+					value={characterData.pronouns}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							pronouns: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Age"
+					value={characterData.age}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							age: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Race"
+					value={characterData.race}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							race: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Class"
+					value={characterData.class}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							class: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Armaments"
+					value={characterData.armaments}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							armaments: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Apperance"
+					value={characterData.apperance}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							apperance: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Backstory"
+					value={characterData.backstory}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							backstory: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Personality"
+					value={characterData.personality}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							personality: e.currentTarget.value,
+						})
+					}
+					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					required
+				/>
+
+				<input
+					type="text"
+					placeholder="Motivation"
+					value={characterData.motivation}
+					onChange={(e) =>
+						setCharacterData({
+							...characterData,
+							motivation: e.currentTarget.value,
 						})
 					}
 					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
