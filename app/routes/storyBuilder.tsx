@@ -30,7 +30,7 @@ export default function storyBuilder() {
 			...campaignData,
 			storyData,
 		};
-	
+
 		navigate("/quest/adventure", { state: { completeData } });
 	};
 	if (navigation.state === "loading" || navigation.state === "submitting") {
@@ -41,87 +41,121 @@ export default function storyBuilder() {
 		);
 	}
 	return (
-		<div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-			<h1 className="text-3xl font-bold mb-6">
-				Greetings, {campaignData.characterData.name}! Hail and Well
-				Met!{" "}
-			</h1>
-			<h1 className="text-3xl font-bold mb-6">Spin Your Tale!</h1>
+		<div className="min-h-screen bg-gray-50 py-8">
+			<div className="max-w-4xl mx-auto px-6">
+				<h1 className="text-3xl font-bold mb-4 text-center" >
+					Greetings, {campaignData.characterData.name}! Hail and Well
+					Met!
+				</h1>
+				<h1 className="text-3xl font-bold mb-8 text-center">Spin Your Tale!</h1>
 
-			<form onSubmit={handleSubmit} className="flex flex-col gap-4">
-				<input
-					type="text"
-					placeholder="Title"
-					value={storyData.title}
-					onChange={(e) =>
-						setStoryData({
-							...storyData,
-							title: e.currentTarget.value,
-						})
-					}
-					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-					required
-				/>
+				<form onSubmit={handleSubmit} className="space-t-8">
+					{/* Story Basics */}
+					<section>
+						<h2 className="text-xl font-semibold mb-4">
+							Story Details
+						</h2>
+						<div className="grid grid-cols-3 gap-6">
+							<div className="flex flex-col">
+								<label className="text-sm font-medium mb-1">
+									Title
+								</label>
+								<input
+									type="text"
+									value={storyData.title}
+									onChange={(e) =>
+										setStoryData({
+											...storyData,
+											title: e.currentTarget.value,
+										})
+									}
+									className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+									required
+								/>
+							</div>
 
-				<input
-					type="text"
-					placeholder="Genre"
-					value={storyData.genre}
-					onChange={(e) =>
-						setStoryData({
-							...storyData,
-							genre: e.currentTarget.value,
-						})
-					}
-					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-				/>
+							<div className="flex flex-col">
+								<label className="text-sm font-medium mb-1">
+									Genre
+								</label>
+								<input
+									type="text"
+									value={storyData.genre}
+									onChange={(e) =>
+										setStoryData({
+											...storyData,
+											genre: e.currentTarget.value,
+										})
+									}
+									className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+								/>
+							</div>
+							<div className="flex flex-col">
+								<label className="text-sm font-medium mb-1">
+									Tone
+								</label>
+								<input
+									type="text"
+									value={storyData.tone}
+									onChange={(e) =>
+										setStoryData({
+											...storyData,
+											tone: e.currentTarget.value,
+										})
+									}
+									className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+								/>
+							</div>
+						</div>
 
-				<input
-					type="text"
-					placeholder="Tone"
-					value={storyData.tone}
-					onChange={(e) =>
-						setStoryData({
-							...storyData,
-							tone: e.currentTarget.value,
-						})
-					}
-					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-				/>
+							<div className="flex flex-col pt-4">
+								<label className="text-sm font-medium mb-1">
+									Narrative Details
+								</label>
+								<textarea
+									rows={3}
+									value={storyData.details}
+									onChange={(e) =>
+										setStoryData({
+											...storyData,
+											details: e.currentTarget.value,
+										})
+									}
+									className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+								/>
 
-				<input
-					type="text"
-					placeholder="Additional Details"
-					value={storyData.details}
-					onChange={(e) =>
-						setStoryData({
-							...storyData,
-							details: e.currentTarget.value,
-						})
-					}
-					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-				/>
+						</div>
+					</section>
 
-				<input
-					type="text"
-					placeholder="Starting Point"
-					value={storyData.hook}
-					onChange={(e) =>
-						setStoryData({
-							...storyData,
-							hook: e.currentTarget.value,
-						})
-					}
-					className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-				/>
+					{/* Hook */}
+					<section>
+						<h2 className="text-xl font-semibold my-4">Hook</h2>
+						<div className="flex flex-col">
+							<label className="text-sm font-medium mb-1">
+								Starting Point
+							</label>
+							<textarea
+								rows={4}
+								value={storyData.hook}
+								onChange={(e) =>
+									setStoryData({
+										...storyData,
+										hook: e.currentTarget.value,
+									})
+								}
+								className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+							/>
+						</div>
+					</section>
 
-				<button
-					type="submit"
-					className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
-				>
-					Embark!
-				</button>
-			</form>
+					<button
+						type="submit"
+						className="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 my-6"
+					>
+						Embark!
+					</button>
+				</form>
+			</div>
 		</div>
 	);
 }
