@@ -7,7 +7,7 @@ export type CampaignData = {
 		class: string;
 		armaments: string;
 		appearance: string;
-
+		abilities: string;
 
 		backstory: string;
 		personality: string
@@ -34,7 +34,8 @@ export const createDefaultCampaign = (): CampaignData => ({
 	  appearance: "",
 	  backstory: "",
 	  personality: "",
-	  motivation: ""
+	  motivation: "",
+	  abilities: ""
   },
   storyData: {
 	  title: "",
