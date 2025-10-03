@@ -157,11 +157,11 @@ export default function characterBuilder() {
 							</label>
 							<textarea
 								rows={2}
-								value={characterData.personality}
+								value={characterData.abilities}
 								onChange={(e) =>
 									setCharacterData({
 										...characterData,
-										personality: e.currentTarget.value,
+										abilities: e.currentTarget.value,
 									})
 								}
 								className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
