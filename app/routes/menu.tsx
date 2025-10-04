@@ -1,9 +1,11 @@
 import { useNavigate, useNavigation } from "react-router";
 import Spinner from "ui/Spinner";
+import { useMusic } from "./MusicContext";
 
 export default function Menu() {
 	const navigation = useNavigation();
 	const navigate = useNavigate();
+  const music = useMusic();
 
 	if (navigation.state === "loading" || navigation.state === "submitting") {
 		return (
@@ -12,6 +14,11 @@ export default function Menu() {
 			</div>
 		);
 	}
+
+    const handleStart = () => {
+    music.setTrack("/app/music/d&d-acoustic.mp3"); // your music file path
+    navigate("/quest/character-builder");
+  };
 
 	return (
 		<div
@@ -30,7 +37,7 @@ export default function Menu() {
 
 			<button
 				className="px-6 py-3 bg-green-900 text-white rounded-lg shadow hover:bg-green-950"
-				onClick={() => navigate("/quest/character-builder")}
+				onClick={handleStart}
 			>
 				Start Adventure
 			</button>
