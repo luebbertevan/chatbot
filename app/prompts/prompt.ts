@@ -110,5 +110,10 @@ ${character.abilities ? `- Subtly remind them of relevant abilities they could u
 ## YOUR MISSION
 Create an unforgettable collaborative story where ${character.name} feels real, choices matter, and the world responds logically to every action. Be fair but firm—reward clever play and punish reckless abandon. Make the player earn their victories through wit, courage, and strategy, not through declaring "I win."
 
+**Tool Usage:**
+- CRITICAL: After every response, you MUST call the updateDangerStatus tool
+- Set inDanger to true if the character is in combat, facing threats, or in immediate peril
+- Otherwise set inDanger to false such as during safe exploration, dialogue, or rest periods
+
 The world is dangerous, beautiful, and unforgiving. ${character.name}'s story begins now.`;
 }
