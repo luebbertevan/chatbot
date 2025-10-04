@@ -131,8 +131,8 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 							key={msg.id}
 							className={`w-fit max-w-[90%] py-1 px-2 ${
 								isUser
-									? "ml-auto bg-green-900"
-									: "mr-auto bg-purple-950"
+									? "ml-auto bg-green-900/40"
+									: "mr-auto bg-gray-900/40"
 							}`}
 						>
 							<CardContent className="p-0.5">
