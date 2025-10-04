@@ -41,7 +41,11 @@ export default function storyBuilder() {
 		);
 	}
 	return (
-		<div className="min-h-screen bg-gray-50 py-8">
+		<div className="min-h-screen bg-gray-50 py-8"
+					style={{
+				backgroundImage: "url('/app/images/castle_wall_rpg.png')",
+				backgroundSize: "cover",
+			}}>
 			<div className="max-w-4xl mx-auto px-6">
 				<h1 className="text-3xl font-bold mb-4 text-center" >
 					Greetings, {campaignData.characterData.name}! Hail and Well

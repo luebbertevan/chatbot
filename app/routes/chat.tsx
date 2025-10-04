@@ -55,7 +55,11 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 			for (const part of lastMessage.parts) {
 				// Check if this is a tool call part with our specific tool
 				if (part.type === "tool-call" && "toolName" in part) {
-					if (part.toolName === "updateDangerStatus" && "result" in part && part.result) {
+					if (
+						part.toolName === "updateDangerStatus" &&
+						"result" in part &&
+						part.result
+					) {
 						const result = part.result as { inDanger: boolean };
 						setInDanger(result.inDanger);
 					}
@@ -81,7 +85,11 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 	}
 
 	return (
-		<div className="flex flex-col h-screen p-4 bg-gray-50">
+		<div className="flex flex-col h-screen p-4 bg-gray-50"
+    			style={{
+				backgroundImage: "url('/app/images/castle_wall_rpg.png')",
+				backgroundSize: "cover",
+			}}>
 			<h2 className="text-3xl font-bold mb-4 text-center">
 				Step Forth, {character.name}. {story.title} Awaits!
 			</h2>
@@ -90,7 +98,9 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 			{inDanger && (
 				<div className="mb-4 p-3 bg-red-100 border border-red-300 rounded-lg shadow-md flex gap-2 items-center">
 					<AlertTriangle size={20} className="text-red-600" />
-					<span className="text-red-700 font-semibold">You are in danger!</span>
+					<span className="text-red-700 font-semibold">
+						You are in danger!
+					</span>
 				</div>
 			)}
 
@@ -109,7 +119,7 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 
 			<div
 				ref={containerRef}
-				className="flex-1 overflow-y-auto space-y-2 p-2 border rounded-lg bg-white shadow-md"
+				className="flex-1 overflow-y-auto space-y-2 p-2 rounded-lg"
 			>
 				{messages.map((msg, index) => {
 					if (index === 0 || index == 1) return null; // Skip system message
@@ -119,25 +129,23 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 					return (
 						<Card
 							key={msg.id}
-							className={`max-w-9/10 py-1 px-2 ${
+							className={`w-fit max-w-[90%] py-1 px-2 ${
 								isUser
-									? "ml-auto bg-gray-200"
-									: "mr-auto bg-blue-100"
+									? "ml-auto bg-green-900"
+									: "mr-auto bg-purple-950"
 							}`}
 						>
 							<CardContent className="p-0.5">
-								{msg.parts.map((part, i) => {
-									// Only show text parts
-									if (part.type === "text") {
-										return (
-											<div key={i} className="whitespace-pre-wrap">
-												{part.text}
-											</div>
-										);
-									}
-									// Hide tool calls from the user
-									return null;
-								})}
+								{msg.parts.map((part, i) =>
+									part.type === "text" ? (
+										<div
+											key={i}
+											className="whitespace-pre-wrap"
+										>
+											{part.text}
+										</div>
+									) : null
+								)}
 							</CardContent>
 						</Card>
 					);
