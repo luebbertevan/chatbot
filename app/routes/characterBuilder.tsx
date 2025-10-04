@@ -30,7 +30,11 @@ export default function characterBuilder() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-50 py-8">
+		<div className="min-h-screen bg-gray-50 py-8"
+					style={{
+				backgroundImage: "url('/app/images/castle_wall_rpg.png')",
+				backgroundSize: "cover",
+			}}>
 			<div className="max-w-4xl mx-auto px-6">
 				<h1 className="text-3xl font-bold mb-8 text-center">
 					Choose Your Character!
@@ -250,7 +254,7 @@ export default function characterBuilder() {
 
 					<button
 						type="submit"
-						className="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
+						className="px-4 py-2 bg-green-900 text-white rounded-lg shadow hover:bg-green-950"
 					>
 						Awaken!
 					</button>

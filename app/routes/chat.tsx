@@ -85,7 +85,11 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 	}
 
 	return (
-		<div className="flex flex-col h-screen p-4 bg-gray-50">
+		<div className="flex flex-col h-screen p-4 bg-gray-50"
+    			style={{
+				backgroundImage: "url('/app/images/castle_wall_rpg.png')",
+				backgroundSize: "cover",
+			}}>
 			<h2 className="text-3xl font-bold mb-4 text-center">
 				Step Forth, {character.name}. {story.title} Awaits!
 			</h2>
@@ -115,7 +119,7 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 
 			<div
 				ref={containerRef}
-				className="flex-1 overflow-y-auto space-y-2 p-2 border rounded-lg bg-white shadow-md"
+				className="flex-1 overflow-y-auto space-y-2 p-2 rounded-lg"
 			>
 				{messages.map((msg, index) => {
 					if (index === 0 || index == 1) return null; // Skip system message
@@ -127,8 +131,8 @@ export default function Chat({ loaderData }: Route.ComponentProps) {
 							key={msg.id}
 							className={`w-fit max-w-[90%] py-1 px-2 ${
 								isUser
-									? "ml-auto bg-gray-200"
-									: "mr-auto bg-blue-100"
+									? "ml-auto bg-green-900"
+									: "mr-auto bg-purple-950"
 							}`}
 						>
 							<CardContent className="p-0.5">

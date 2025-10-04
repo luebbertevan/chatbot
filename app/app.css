@@ -10,6 +10,36 @@
   --font-Roboto: "Roboto", sans-serif;
 }
 
+/* globals.css */
+
+/* headers: more dynamic with drop shadow */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-gray-100 drop-shadow-lg font-bold mb-6 tracking-wide;
+}
+
+/* base styles for all text: softer white and more readable */
+body, p, span, li, a, div {
+  @apply text-gray-200 font-normal leading-relaxed;
+}
+
+/* subtle shadow for body text to improve readability */
+p, span, li, a, div {
+  @apply drop-shadow-sm;
+}
+
+
+/* globals.css */
+
+/* base styles for all buttons */
+button {
+  @apply bg-green-900 hover:bg-green-950;
+}
+
+textarea, input {
+  @apply focus:ring-green-700
+}
+
+
 /* html,
 body {
   @apply bg-white dark:bg-gray-950;
